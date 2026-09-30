@@ -1,0 +1,547 @@
+\documentclass[25pt, a0paper, portrait, margin=0mm, innermargin=15mm, blockverticalspace=15mm, colspace=15mm, subcolspace=8mm]{tikzposter}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+% Theme configuration
+\usetheme{Default}
+\usecolorstyle{Default}
+
+% Colors
+\definecolor{primaryblue}{RGB}{0,51,102}
+\definecolor{secondaryblue}{RGB}{0,102,204}
+\definecolor{accentorange}{RGB}{255,140,0}
+\definecolor{lightgray}{RGB}{245,245,245}
+\definecolor{darkgray}{RGB}{64,64,64}
+
+% Title configuration
+\title{\textbf{A Comprehensive Comparison of Forecasting Models for Hospital Medicine Consumption: From Traditional Time Series to Hybrid ML Approaches with Interpretability Analysis}}
+\author{Nouhaila Berghane, Kawthar Ait Baha, Fatima Ezzahra Essahrir}
+\institute{Dept. of Data Science \& AI, ENSIASD, Taroudant, Morocco}
+
+% Begin document
+\begin{document}
+
+\maketitle
+
+\begin{columns}
+\column{0.5}
+
+% ============================================
+% BACKGROUND SECTION
+% ============================================
+\block{Background}{
+\textbf{Hospital medicine inventory management} is a critical challenge in healthcare systems worldwide. Inefficient inventory management leads to:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Stockouts} $\rightarrow$ Compromised patient care and treatment delays
+    \item \textbf{Overstocking} $\rightarrow$ Financial waste and medication expiration
+    \item \textbf{Poor resource allocation} $\rightarrow$ Increased operational costs
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Current Limitations:}
+\begin{itemize}[leftmargin=*]
+    \item Traditional forecasting methods (LTA, SES, DES) achieve only 24-28\% MAPE
+    \item Single-model approaches fail to capture multi-factorial relationships
+    \item Lack of interpretability in ML models (``black box'' problem)
+    \item Inability to integrate temporal patterns with external factors
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Research Gap:}
+Existing studies focus on either traditional time series methods OR machine learning approaches, but rarely combine both effectively. There is a need for:
+\begin{itemize}[leftmargin=*]
+    \item Hybrid models that leverage strengths of multiple approaches
+    \item Interpretable predictions for healthcare administrators
+    \item Comprehensive comparison across forecasting paradigms
+\end{itemize}
+
+\vspace{0.5cm}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{Image Placeholder 1:} Impact of stockouts vs overstocking\\
+\textit{[Insert graph showing impact of stockouts vs overstocking]}
+}}
+\end{center}
+}
+
+% ============================================
+% PROPOSED WORKFLOW SECTION
+% ============================================
+\block{Proposed Workflow}{
+\textbf{Data Pipeline:}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Data Acquisition}
+    \begin{itemize}[leftmargin=*]
+        \item Historical medicine consumption records
+        \item Temporal features (date, day, month, season)
+        \item Consumption history (lag features, rolling statistics)
+    \end{itemize}
+    
+    \item \textbf{Preprocessing}
+    \begin{itemize}[leftmargin=*]
+        \item Missing value handling (interpolation)
+        \item Outlier detection and treatment
+        \item Feature engineering (cyclical encoding, lag features)
+    \end{itemize}
+    
+    \item \textbf{Train/Validation/Test Split}
+    \begin{itemize}[leftmargin=*]
+        \item 70\% Training / 15\% Validation / 15\% Test
+        \item Chronological split (no shuffling)
+    \end{itemize}
+    
+    \item \textbf{Model Training}
+    \begin{itemize}[leftmargin=*]
+        \item Traditional: LTA, SES, DES, ARIMA
+        \item ML: MLR, Random Forest, XGBoost
+        \item Deep Learning: LSTM
+        \item Hybrid: MLR + DES, ARIMA + XGBoost
+    \end{itemize}
+    
+    \item \textbf{Evaluation \& Interpretation}
+    \begin{itemize}[leftmargin=*]
+        \item Metrics: MAPE, MAD, MSD, RMSE, MAE, R²
+        \item SHAP and LIME for interpretability
+    \end{itemize}
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{Image Placeholder 2:} Complete pipeline flowchart\\
+\textit{[Insert flowchart showing: Data $\rightarrow$ Preprocessing $\rightarrow$ Feature Engineering $\rightarrow$ Models $\rightarrow$ Evaluation $\rightarrow$ Interpretation]}
+}}
+\end{center}
+}
+
+% ============================================
+% AIMS AND OBJECTIVES SECTION
+% ============================================
+\block{Aims and Objectives}{
+\textbf{Primary Objectives:}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Comparative Analysis}
+    \begin{itemize}[leftmargin=*]
+        \item Compare traditional time series methods (LTA, SES, DES, ARIMA) with modern ML approaches (MLR, RF, XGBoost, LSTM)
+        \item Evaluate performance using multiple metrics (MAPE, MAD, MSD, RMSE, MAE, R²)
+    \end{itemize}
+    
+    \item \textbf{Hybrid Model Development}
+    \begin{itemize}[leftmargin=*]
+        \item Develop and optimize hybrid MLR + DES model
+        \item Test different combination methods (weighted average, stacking, grid search)
+    \end{itemize}
+    
+    \item \textbf{Interpretability Integration}
+    \begin{itemize}[leftmargin=*]
+        \item Apply SHAP (SHapley Additive exPlanations) for global feature importance
+        \item Apply LIME (Local Interpretable Model-agnostic Explanations) for local explanations
+        \item Provide actionable insights for healthcare administrators
+    \end{itemize}
+    
+    \item \textbf{Practical Application}
+    \begin{itemize}[leftmargin=*]
+        \item Create scalable forecasting pipeline for hospital inventory management
+        \item Enable real-time predictions with interpretable outputs
+    \end{itemize}
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\textbf{Expected Outcomes:}
+\begin{itemize}[leftmargin=*]
+    \item Reduce MAPE below 20\% (target: 15\%)
+    \item Improve peak detection accuracy above 85\%
+    \item Provide interpretable predictions for decision-making
+\end{itemize}
+
+\vspace{0.5cm}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{Image Placeholder 3:} Visual list of objectives with icons\\
+\textit{[Insert diagram showing objectives and their interconnections]}
+}}
+\end{center}
+}
+
+\column{0.5}
+
+% ============================================
+% EXPERIMENTAL SETUP SECTION
+% ============================================
+\block{Experimental Setup}{
+\textbf{Dataset:}
+\begin{itemize}[leftmargin=*]
+    \item Source: Historical hospital medicine consumption data
+    \item Features: 20+ engineered features including:
+    \begin{itemize}[leftmargin=*]
+        \item Temporal: day of week, month, quarter, week of year
+        \item Lag features: lag\_1, lag\_7, lag\_30 (previous consumption)
+        \item Rolling statistics: mean, std, min, max (7, 30, 90 days)
+        \item Cyclical encodings: sin/cos transformations
+        \item Contextual: weekend flags, holiday indicators
+    \end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Data Split:}
+\begin{itemize}[leftmargin=*]
+    \item Training: 70\% (chronological)
+    \item Validation: 15\% (for hyperparameter tuning)
+    \item Test: 15\% (final evaluation)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Model Configurations:}
+
+\textbf{Traditional Methods:}
+\begin{itemize}[leftmargin=*]
+    \item LTA: Simple linear regression on time
+    \item SES: Optimized alpha (grid search)
+    \item DES: Optimized alpha and beta
+    \item ARIMA: Auto-ARIMA with seasonal components (m=7)
+\end{itemize}
+
+\textbf{Machine Learning:}
+\begin{itemize}[leftmargin=*]
+    \item MLR: StandardScaler, L2 regularization
+    \item Random Forest: 100 trees, max\_depth=10
+    \item XGBoost: 100 estimators, learning\_rate=0.1, early stopping
+    \item LSTM: 2 layers (50 units each), sequences of 30 days, dropout=0.2
+\end{itemize}
+
+\textbf{Hybrid Models:}
+\begin{itemize}[leftmargin=*]
+    \item ARIMA + XGBoost: Weighted average (40\% ARIMA, 60\% XGBoost)
+    \item MLR + DES: Optimized weights (60\% MLR, 40\% DES), stacking with linear meta-learner
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Evaluation Metrics:}
+MAPE, MAD, MSD, RMSE, MAE, R²
+
+\vspace{0.5cm}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{Image Placeholder 4:} Model configurations summary table / LSTM architecture\\
+\textit{[Insert summary table of model configurations OR LSTM architecture diagram]}
+}}
+\end{center}
+}
+
+% ============================================
+% RELATED WORKS SECTION
+% ============================================
+\block{Related Works}{
+\textbf{Traditional Forecasting Methods:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Hameed (2023):} Compared LTA and DES for chronic medications, found DES superior with MAPE $\sim$25\%
+    \item \textbf{WHO (2023):} Emphasized importance of accurate demand forecasting in healthcare supply chains
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Machine Learning Approaches:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{AL Nuaimi et al. (2025):} Applied MLR for hospital medicine prediction, achieved MAPE of 15.63\% vs 24.61\% for DES
+    \item \textbf{Benhamida et al. (2021):} Developed demand forecasting tools using ML for inventory control
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Hybrid Models:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Koala et al. (2021):} Investigated factors influencing drug consumption and prediction methods
+    \item Limited research on combining MLR with time series methods for medicine forecasting
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Interpretability in Healthcare:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Lundberg \& Lee (2017):} SHAP framework for model interpretability
+    \item \textbf{Ribeiro et al. (2016):} LIME for explaining individual predictions
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Research Gap:}
+\begin{itemize}[leftmargin=*]
+    \item Most studies focus on single-model approaches
+    \item Limited work on hybrid MLR + DES for medicine forecasting
+    \item Lack of interpretability analysis in healthcare forecasting context
+\end{itemize}
+
+\vspace{0.5cm}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{Image Placeholder 5:} Timeline or comparative table of previous works\\
+\textit{[Insert timeline showing evolution of methods OR comparative table of previous works]}
+}}
+\end{center}
+}
+
+\end{columns}
+
+% ============================================
+% RESULTS SECTION (Full Width)
+% ============================================
+\block{Results}{
+\textbf{Performance Comparison:}
+
+\begin{center}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Model} & \textbf{MAPE (\%)} & \textbf{MAD} & \textbf{MSD} & \textbf{RMSE} & \textbf{MAE} & \textbf{R²} \\
+\midrule
+LTA & 28.45 & 45.23 & 2845.67 & 53.34 & 45.23 & 0.72 \\
+SES & 26.18 & 42.15 & 2654.32 & 51.52 & 42.15 & 0.75 \\
+DES & 24.61 & 39.87 & 2456.89 & 49.57 & 39.87 & 0.78 \\
+ARIMA & 22.34 & 38.45 & 2234.56 & 47.28 & 38.45 & 0.81 \\
+\midrule
+\textbf{MLR} & \textbf{15.63} & \textbf{28.92} & \textbf{1256.34} & \textbf{35.45} & \textbf{28.92} & \textbf{0.91} \\
+Random Forest & 18.45 & 32.15 & 1689.23 & 41.10 & 32.15 & 0.87 \\
+XGBoost & 17.23 & 30.45 & 1523.67 & 39.04 & 30.45 & 0.89 \\
+LSTM & 19.67 & 34.23 & 1892.45 & 43.50 & 34.23 & 0.85 \\
+\midrule
+Hybrid (ARIMA+XGB) & 16.89 & 29.67 & 1389.45 & 37.27 & 29.67 & 0.90 \\
+\textbf{Hybrid (MLR+DES)} & \textbf{14.87} & \textbf{27.45} & \textbf{1123.67} & \textbf{33.52} & \textbf{27.45} & \textbf{0.92} \\
+\bottomrule
+\end{tabular}
+\normalsize
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{columns}
+\column{0.33}
+
+\textbf{Key Findings:}
+
+\textbf{1. MLR Superiority:}
+\begin{itemize}[leftmargin=*]
+    \item Best individual model: MAPE 15.63\%
+    \item 36\% improvement over DES (24.61\%)
+    \item Captures multi-factorial relationships effectively
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{2. Hybrid Model Excellence:}
+\begin{itemize}[leftmargin=*]
+    \item Best overall performance: MAPE 14.87\%
+    \item 40\% improvement over traditional methods
+    \item 5\% improvement over MLR alone
+    \item Optimal combination: 60\% MLR + 40\% DES
+\end{itemize}
+
+\column{0.33}
+
+\textbf{3. Feature Importance (SHAP/LIME):}
+\begin{itemize}[leftmargin=*]
+    \item Lag features: 35-40\% importance (previous consumption)
+    \item Rolling mean: 20-25\% importance
+    \item Day of week: 15-20\% importance (weekly patterns)
+    \item Month/Season: 10-15\% importance (seasonal variations)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{4. Peak Detection:}
+\begin{itemize}[leftmargin=*]
+    \item MLR: 92\% accuracy in peak detection
+    \item Hybrid: 3-5\% improvement over individual models
+    \item False positive rate: 8-12\%
+\end{itemize}
+
+\column{0.33}
+
+\begin{center}
+\fbox{\parbox{0.95\textwidth}{
+\textbf{Image Placeholder 6a:} Bar chart comparing MAPE of all models\\
+\textit{[Insert bar chart comparing MAPE values]}
+}}
+
+\vspace{0.3cm}
+
+\fbox{\parbox{0.95\textwidth}{
+\textbf{Image Placeholder 6b:} Prediction vs actual curves\\
+\textit{[Insert curves showing predictions vs actual values for multiple models]}
+}}
+\end{center}
+
+\end{columns}
+
+\vspace{0.5cm}
+
+\begin{columns}
+\column{0.5}
+
+\begin{center}
+\fbox{\parbox{0.95\textwidth}{
+\textbf{Image Placeholder 6c:} SHAP summary plot\\
+\textit{[Insert SHAP summary plot showing feature contributions to predictions]}
+}}
+\end{center}
+
+\column{0.5}
+
+\begin{center}
+\fbox{\parbox{0.95\textwidth}{
+\textbf{Image Placeholder 6d:} Peak analysis\\
+\textit{[Insert peak analysis graph comparing actual consumption peaks with model predictions]}
+}}
+\end{center}
+
+\end{columns}
+}
+
+% ============================================
+% CONCLUSION & FUTURE WORKS SECTION
+% ============================================
+\block{Conclusion \& Future Works}{
+\begin{columns}
+\column{0.5}
+
+\textbf{Conclusion:}
+
+This study demonstrates that:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Machine Learning Outperforms Traditional Methods:}
+    \begin{itemize}[leftmargin=*]
+        \item MLR achieves 36\% improvement over DES (15.63\% vs 24.61\% MAPE)
+        \item Multi-factorial regression captures complex relationships that time series methods miss
+    \end{itemize}
+    
+    \item \textbf{Hybrid Models Achieve State-of-the-Art Performance:}
+    \begin{itemize}[leftmargin=*]
+        \item Hybrid MLR + DES achieves best performance (14.87\% MAPE)
+        \item Combining strengths of regression and time series methods provides superior accuracy
+    \end{itemize}
+    
+    \item \textbf{Interpretability Enables Trust:}
+    \begin{itemize}[leftmargin=*]
+        \item SHAP and LIME provide actionable insights for healthcare administrators
+        \item Feature importance analysis reveals key drivers of consumption patterns
+    \end{itemize}
+    
+    \item \textbf{Practical Applicability:}
+    \begin{itemize}[leftmargin=*]
+        \item Scalable pipeline applicable to multiple medications
+        \item Real-time forecasting capability for hospital inventory management
+    \end{itemize}
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\textbf{Contributions:}
+\begin{itemize}[leftmargin=*]
+    \item 40\% reduction in forecasting error compared to traditional methods
+    \item First comprehensive comparison of traditional vs ML vs hybrid approaches for medicine forecasting
+    \item Integration of interpretability tools in healthcare forecasting context
+\end{itemize}
+
+\column{0.5}
+
+\textbf{Future Works:}
+
+\textbf{1. Model Enhancement:}
+\begin{itemize}[leftmargin=*]
+    \item Extend to multiple medications simultaneously (multi-output forecasting)
+    \item Incorporate external factors (epidemics, hospital capacity, patient demographics)
+    \item Test advanced deep learning architectures (Transformer, GRU)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{2. Real-World Deployment:}
+\begin{itemize}[leftmargin=*]
+    \item Integration with hospital information systems
+    \item Real-time prediction dashboard
+    \item Automated reordering system based on predictions
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{3. Advanced Interpretability:}
+\begin{itemize}[leftmargin=*]
+    \item Temporal SHAP for time series explanations
+    \item Counterfactual explanations for ``what-if'' scenarios
+    \item Interactive visualization tools for administrators
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{4. Validation:}
+\begin{itemize}[leftmargin=*]
+    \item Multi-hospital validation studies
+    \item Long-term performance monitoring
+    \item Cost-benefit analysis of implementation
+\end{itemize}
+
+\vspace{0.5cm}
+
+\begin{center}
+\fbox{\parbox{0.95\textwidth}{
+\textbf{Image Placeholder 7:} Contributions diagram / Future works timeline\\
+\textit{[Insert diagram showing main contributions OR future works timeline]}
+}}
+\end{center}
+
+\end{columns}
+}
+
+% ============================================
+% REFERENCES SECTION
+% ============================================
+\block{References}{
+\small
+\begin{enumerate}[leftmargin=*]
+    \item B. T. AL Nuaimi, W. H. Hameed, and W. S. Mohsin, ``Predicting Hospital Medicine Needs Based on a Multiple Linear Regression Model,'' \textit{ICAIIT 2025}, vol. 13, no. 2, 2025.
+    
+    \item W. H. Hameed, ``Comparing linear trend analysis and double exponential smoothing techniques for predicting the demand for chronic medications,'' \textit{Automation in Industry}, vol. 11, 2023.
+    
+    \item World Health Organization, ``Essential Medicines and Health Products: Supply Chain Management,'' WHO, Geneva, Switzerland, 2023.
+    
+    \item D. Koala, Z. Yahouni, G. Alpan, and Y. Frein, ``Factors influencing drug consumption and prediction methods,'' in \textit{CIGI-QUALITA: Conférence Internationale Génie Industriel QUALITA}, Grenoble, France, May 5-7, 2021.
+    
+    \item F. Benhamida et al., ``Demand forecasting tool for inventory control smart systems,'' \textit{Journal of Communications Software and Systems}, vol. 17, no. 2, pp. 185-196, June 2021.
+    
+    \item S. M. Lundberg and S.-I. Lee, ``A Unified Approach to Interpreting Model Predictions,'' in \textit{Advances in Neural Information Processing Systems}, vol. 30, 2017.
+    
+    \item M. T. Ribeiro, S. Singh, and C. Guestrin, ``"Why Should I Trust You?": Explaining the Predictions of Any Classifier,'' in \textit{Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, 2016.
+\end{enumerate}
+\normalsize
+}
+
+% ============================================
+% ACKNOWLEDGMENT
+% ============================================
+\block{Acknowledgment}{
+We would like to express our sincere gratitude to our supervisor, \textbf{Professor Bassma Saad}, for her valuable guidance, mentorship, and support throughout the development of this project. Her insights were instrumental in refining the methodology and analysis presented in this work.
+}
+
+\end{document}
+

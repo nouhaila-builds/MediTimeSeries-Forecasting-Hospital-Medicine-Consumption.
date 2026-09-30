@@ -1,0 +1,47 @@
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Full Open Medic dump (~479 MB, exceeds GitHub 100 MB limit)
+OPEN_MEDIC_2024/*.CSV
+OPEN_MEDIC_2024/*.csv
+
+# Third-party papers (do not redistribuer)
+article-sante-basma/
+School_Dropout_Paper.pdf
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Local training artifacts (published results stay in models/)
+outputs/
+*.h5
+*.keras
+checkpoints/
